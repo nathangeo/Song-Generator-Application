@@ -1,0 +1,34 @@
+<p>cof-tool works!</p>
+
+<div>
+<p>Tonic</p>
+<select id="tonic" name="tonic">
+    <option value="B">B</option>
+    <option value="Gf">Gf</option>
+    <option value="Df">Df</option>
+    <option value="Af">Af</option>
+    <option value="Ef">Ef</option>
+    <option value="Bf">Bf</option>
+    <option value="F">F</option>
+    <option value="C">C</option>
+    <option value="G">G</option>
+    <option value="D">D</option>
+    <option value="A">A</option>
+    <option value="E">E</option>
+</select>
+<p>Mode</p>
+<select id="mode" name="mode">
+    <option value="Lydian">Lydian</option>
+    <option value="Ionian">Ionian</option>
+    <option value="Mixolydian">Mixolydian</option>
+    <option value="Dorian">Dorian</option>
+    <option value="Aeolian">Aeolian</option>
+    <option value="Phrygian">Phrygian</option>
+    <option value="Locrian">Locrian</option>
+</select>
+<p>Note Length</p>
+<input id="notelength" name="notelength" type="number">
+<button type="submit" (click)="cofgenerate()">Submit</button>
+</div>
+
+<div id="songPlayback"></div>
