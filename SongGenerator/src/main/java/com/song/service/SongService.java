@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.song.dao.SongDAO;
+import com.song.entity.Song;
 
 @Service
 public class SongService {
@@ -25,6 +26,14 @@ public class SongService {
 	@Autowired
 	public SongService(SongDAO songdao) {
 		this.songdao = songdao;
+	}
+	
+	public List<Song> findSongByUsername(String username) {
+		return this.songdao.findSongByUsername(username);
+	}
+	
+	public Song addUpdateSong(Song song) {
+		return this.songdao.save(song);
 	}
 	
 	public static void initializeIt(Track t, byte instrument) {

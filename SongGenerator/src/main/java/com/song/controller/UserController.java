@@ -1,6 +1,7 @@
 package com.song.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,12 @@ import com.song.service.UserService;
 @CrossOrigin
 public class UserController {
 
-	@Autowired
 	UserService userservice;
+	
+	@Autowired
+	public UserController(UserService userservice) {
+		this.userservice = userservice;
+	}
 	
 	//BCryptPasswordEncoder encrypt = new BCryptPasswordEncoder();
 	
@@ -38,5 +43,35 @@ public class UserController {
     	return userservice.getAllUsers();
     }
 	
+    @RequestMapping(value = "/add", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public User addUpdateUser(@RequestBody User user) throws IOException {
+    	
+    	boolean b = this.userservice.existsByUsername(user.getUsername());
+    	if(b == false) {
+        	User u = this.userservice.addUpdateUser(user);
+    		u.setPassword("*****");
+    		return u;
+    	} else {
+    		return null;
+    	}	   	
+    }
     
+    @RequestMapping(value = "/login", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public User loginUser(@RequestBody User user) throws IOException {
+    	
+    	boolean b = this.userservice.existsByUsernameAndPassword(user.getUsername(), user.getPassword());
+    	if(b == true) {
+    		User u = this.userservice.findUserByUsername(user.getUsername());
+    		u.setPassword("*****");
+    		return u;
+    	} else {
+    		return null;
+    	}
+    }
 }

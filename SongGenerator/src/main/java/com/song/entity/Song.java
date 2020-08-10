@@ -1,6 +1,7 @@
 package com.song.entity;
 
 import java.io.File;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,8 +25,8 @@ public class Song {
     @Column(name = "SONG_FILE")
     private byte[] songFile;
     
-    @Column(name = "U_ID")
-	private int userId;
+    @Column(name = "USERNAME")
+	private String username;
 
     
     
@@ -37,20 +38,20 @@ public class Song {
 
 
 
-	public Song(String title) {
+	public Song(String title, String username) {
 		super();
 		this.title = title;
+		this.username = username;
 	}
 
 
 
-
-	public Song(int songId, String title, byte[] songFile, int userId) {
+	public Song(int songId, String title, byte[] songFile, String username) {
 		super();
 		this.songId = songId;
 		this.title = title;
 		this.songFile = songFile;
-		this.userId = userId;
+		this.username = username;
 	}
 
 
@@ -98,15 +99,15 @@ public class Song {
 
 
 
-	public int getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
 
 
 
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
@@ -114,11 +115,11 @@ public class Song {
 
 	@Override
 	public String toString() {
-		return "Song [songId=" + songId + ", title=" + title + ", songFile=" + songFile + ", userId=" + userId + "]";
+		return "Song [songId=" + songId + ", title=" + title + ", songFile=" + Arrays.toString(songFile) + ", username="
+				+ username + "]";
 	}
-    
-    
-    
+
+	
     
 	
 }

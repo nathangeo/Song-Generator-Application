@@ -32,18 +32,8 @@
 </div>
 
 <div id="songPlayback"></div>
-
-
-
-<div>
-<p>Left</p>
-<input id="left" name="left" type="number">
-<p>Right</p>
-<input id="right" name="right" type="number">
-<p>Beat Length</p>
-<input id="beatLength" name="beatLength" type="number">
-<button type="submit" (click)="polyrythmGenerate()">Submit</button>
-
+<div id="saveSong">
+    <input id="songTitle" name="title" type="text" placeholder="Song Title" required>
+    <button type="submit" (click)="saveSong()">Save Midi File To Profile</button>
 </div>
 
-<div id="polyPlayback"></div>

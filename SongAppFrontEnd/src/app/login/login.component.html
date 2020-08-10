@@ -1,0 +1,19 @@
+<body class="TheBody">
+<p id="loginhere">Login</p>
+<div class="logEmIn">
+    <input id = "usr" type="text" placeholder="Enter Username" name="username" required>
+    <input id="pass" placeholder="Enter Password" [type]="show ? 'text' : 'password'" />
+    <button (click)="password()" type="button">Show</button>    
+    <button (click)="onClick($event)" type="button">Login</button>
+</div>
+<div class="container" id="loginMessage">
+    <p id="msg"></p>
+</div>
+<p>Create New User</p>
+<div class="newUser">
+    <input id="username" type="text" placeholder="Enter Username" required>
+    <input id="password" placeholder="EnterPassword" [type]="show ? 'text' : 'password'"/>
+    <button (click)="password()" type="button">Show</button>    
+    <button (click)="createUser()" type="button">Login</button>
+</div>
+</body>

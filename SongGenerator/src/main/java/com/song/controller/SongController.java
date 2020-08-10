@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.song.beans.PolyInput;
 import com.song.beans.SongInput;
+import com.song.entity.Song;
+import com.song.entity.User;
 import com.song.service.SongService;
 
 @CrossOrigin
@@ -69,6 +71,22 @@ public class SongController {
     	s.add(encodedString);
     	return s;
     	
+    }
+    
+    @RequestMapping(value = "/save", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public Song saveSong(@RequestBody Song song) throws IOException {
+    	return this.songservice.addUpdateSong(song);
+    }
+    
+    @RequestMapping(value = "/getusersongs", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<Song> getSongsByUsername(@RequestBody User user) throws IOException {
+    	return this.songservice.findSongByUsername(user.getUsername());
     }
     
 }

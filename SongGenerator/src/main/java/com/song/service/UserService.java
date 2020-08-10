@@ -40,4 +40,13 @@ public class UserService {
 	public User findUserByUsername(String username) {
 		return this.userdao.findUserByUsername(username);
 	}
+	
+	public boolean existsByUsernameAndPassword(String username, String password) {
+		return this.userdao.existsByUsernameAndPassword(username, password);
+	}
+	
+	public boolean existsByUsername(String username) {
+		return this.userdao.existsByUsername(username);
+	}
+	
 }
