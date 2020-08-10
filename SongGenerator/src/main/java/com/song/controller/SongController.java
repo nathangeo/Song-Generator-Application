@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.song.beans.PolyInput;
 import com.song.beans.SongInput;
 import com.song.service.SongService;
 
@@ -51,4 +52,23 @@ public class SongController {
     	return s;
     	
     }
+    
+    @RequestMapping(value = "/polyrythm", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<String> polyrythm(@RequestBody PolyInput input) throws IOException {
+    	List<String> s = new ArrayList<String>();
+    	File f = this.songservice.polyrythm(input.getLeft(), input.getRight(), input.getBeatLength());
+    	byte[] byteformat = new byte[(int) f.length()];
+    	FileInputStream fis = new FileInputStream(f);
+    	fis.read(byteformat);
+    	fis.close();
+    	byte[] encoded = Base64.encodeBase64(byteformat);
+    	String encodedString = new String(encoded);
+    	s.add(encodedString);
+    	return s;
+    	
+    }
+    
 }
