@@ -22,7 +22,7 @@ public class Song {
     @Column(name = "SONG_TITLE")
 	private String title;
     
-    @Column(name = "SONG_FILE")
+    @Column(name = "SONG_FILE", length = 500)
     private byte[] songFile;
     
     @Column(name = "USERNAME")

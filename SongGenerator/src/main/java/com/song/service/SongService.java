@@ -3,6 +3,7 @@ package com.song.service;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiEvent;
@@ -83,6 +84,112 @@ public class SongService {
 		
 	}
 	
+	public File randomFourChord(String a, String b, String c, String d, long noteLength) {
+	    System.out.println("midifile begin ");
+		long time = 0;
+		byte[] baseNotes = {0x47, 0x42, 0x3D, 0x44, 0x3F, 0x46, 0x41, 0x3C, 0x43, 0x3E, 0x45, 0x40};
+		String[] tonics = {"B", "Gf", "Df", "Af", "Ef", "Bf", "F", "C", "G", "D", "A", "E"};
+		String[] input = {a,b,c,d};
+		byte[] inputBytes = {0,0,0,0};
+		for(int i = 0; i < input.length; i++) {
+			System.out.println("helllllll");
+			for(int j = 0; j < tonics.length; j++) {
+				if(input[i].equals(tonics[j])) {
+					System.out.println("hello");
+					inputBytes[i] = baseNotes[j];
+					break;
+				}
+			}
+		}
+		System.out.println(inputBytes[3]);
+		try {
+			
+			Sequence s = new Sequence(javax.sound.midi.Sequence.PPQ,24);
+			Track t = s.createTrack();
+			
+			//turn on General MIDI sound set
+			byte[] b2 = {(byte)0xF0, 0x7E, 0x7F, 0x09, 0x01, (byte)0xF7};
+			SysexMessage sm = new SysexMessage();
+			sm.setMessage(b2, 6);
+			MidiEvent me = new MidiEvent(sm,(long)0);
+			t.add(me);
+
+			//set tempo
+			MetaMessage mt = new MetaMessage();
+	        byte[] bt = {0x02, (byte)0x00, 0x00};
+			mt.setMessage(0x51 ,bt, 3);
+			me = new MidiEvent(mt,(long)0);
+			t.add(me);
+
+			//set track name
+			mt = new MetaMessage();
+			String TrackName = new String("midifile track");
+			mt.setMessage(0x03 ,TrackName.getBytes(), TrackName.length());
+			me = new MidiEvent(mt,(long)0);
+			t.add(me);
+
+			//set omni on
+			ShortMessage mm = new ShortMessage();
+			mm.setMessage(0xB0, 0x7D,0x00);
+			me = new MidiEvent(mm,(long)0);
+			t.add(me);
+
+			//set poly on
+			mm = new ShortMessage();
+			mm.setMessage(0xB0, 0x7F,0x00);
+			me = new MidiEvent(mm,(long)0);
+			t.add(me);
+
+			//set instrument to Piano
+			mm = new ShortMessage();
+			mm.setMessage(0xC0, 0x00, 0x00);
+			me = new MidiEvent(mm,(long)0);
+			t.add(me);
+			
+			for(int i = 0; i < inputBytes.length; i++) {
+				byte bb = inputBytes[i];
+				byte bbb = (byte) (bb + 0x07);
+				byte[] theNotes = {bb, (byte) (bb + 0x03), (byte) (bb + 0x04), bbb, (byte) (bbb + 0x02), (byte) (bbb + 0x04), (byte) (bbb + 0x05), (byte) (bbb + 0x07)};
+				for(int j = 0; j < 8; j++) {
+					int rnd = new Random().nextInt(theNotes.length);
+					byte dd = theNotes[rnd];
+					time = time + 1;
+					//note on
+					mm = new ShortMessage();
+					mm.setMessage(0x90,dd,0x60);
+					me = new MidiEvent(mm, (long) time);
+					t.add(me);
+					
+					time = time + noteLength;
+					
+					//note off
+					mm = new ShortMessage();
+					mm.setMessage(0x80,dd,0x40);
+					me = new MidiEvent(mm, (long) time);
+					t.add(me);
+				}
+			}
+			
+			time = time + 19;
+			
+			//set end of track 19 ticks past last note
+			MetaMessage mt1 = new MetaMessage();
+	        byte[] bet = {}; // empty array
+			mt1.setMessage(0x2F,bet,0);
+			me = new MidiEvent(mt1, (long) time);
+			t.add(me);
+
+			//write the MIDI sequence to a MIDI file
+			File f = new File("midifilenotes.mid");
+			MidiSystem.write(s,1,f);
+			return f;
+			
+		} catch(Exception e) {
+			System.out.println("Exception caught: " + e.toString());
+		}
+		return null;
+	}
+	
 	public File polyrythm(int left, int right, int beatLength) {
 		System.out.println("midifile start");
 		byte[] thenotes = {0x3C, 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47};
@@ -98,9 +205,10 @@ public class SongService {
 			MidiEvent me;
 			
 			//loop for track 1
+			initializeIt(t1, (byte) 0x03);
 			while(time <= beatLength + 0.5) {
 				
-				initializeIt(t1, (byte) 0x03);
+				
 				//note 1 on
 				mm = new ShortMessage();
 				mm.setMessage(0x90,0x3C,0x60);
@@ -122,9 +230,10 @@ public class SongService {
 			time = 0;
 			
 			//loop for track 2
+			initializeIt(t2, (byte) 0x02);
 			while(time <= beatLength + 0.5) {
 				
-				initializeIt(t2, (byte) 0x02);
+				
 				//note 2 on
 				mm = new ShortMessage();
 				mm.setMessage(0x90,0x3E,0x60);

@@ -47,7 +47,19 @@ export class LoginComponent implements OnInit {
   }
 
   createUser() {
-    console.log("wordks");
+    let input = {
+      "username" : ((document.getElementById("username") as HTMLInputElement).value),
+      "password" : ((document.getElementById("password") as HTMLInputElement).value)
+    }
+    this.httpClient.post("http://localhost:9000/user/add", input)
+    .subscribe(x => {
+      let d = document.getElementById("newusermsg");
+      if(x == null) {
+        d.innerHTML = 'Account already exists. Try again.';
+      } else {
+        d.innerHTML = 'User Created';
+      }
+    });
   }
 
 }

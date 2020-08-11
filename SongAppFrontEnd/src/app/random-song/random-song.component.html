@@ -1,0 +1,69 @@
+<p>random-song works!</p>
+<div>
+    <p>Chords</p>
+    <select id="chord1" name="chord1">
+        <option value="B">B</option>
+        <option value="Gf">Gf</option>
+        <option value="Df">Df</option>
+        <option value="Af">Af</option>
+        <option value="Ef">Ef</option>
+        <option value="Bf">Bf</option>
+        <option value="F">F</option>
+        <option value="C">C</option>
+        <option value="G">G</option>
+        <option value="D">D</option>
+        <option value="A">A</option>
+        <option value="E">E</option>
+    </select>
+    <select id="chord2" name="chord2">
+        <option value="B">B</option>
+        <option value="Gf">Gf</option>
+        <option value="Df">Df</option>
+        <option value="Af">Af</option>
+        <option value="Ef">Ef</option>
+        <option value="Bf">Bf</option>
+        <option value="F">F</option>
+        <option value="C">C</option>
+        <option value="G">G</option>
+        <option value="D">D</option>
+        <option value="A">A</option>
+        <option value="E">E</option>
+    </select>
+    <select id="chord3" name="chord3">
+        <option value="B">B</option>
+        <option value="Gf">Gf</option>
+        <option value="Df">Df</option>
+        <option value="Af">Af</option>
+        <option value="Ef">Ef</option>
+        <option value="Bf">Bf</option>
+        <option value="F">F</option>
+        <option value="C">C</option>
+        <option value="G">G</option>
+        <option value="D">D</option>
+        <option value="A">A</option>
+        <option value="E">E</option>
+    </select>
+    <select id="chord4" name="chord4">
+        <option value="B">B</option>
+        <option value="Gf">Gf</option>
+        <option value="Df">Df</option>
+        <option value="Af">Af</option>
+        <option value="Ef">Ef</option>
+        <option value="Bf">Bf</option>
+        <option value="F">F</option>
+        <option value="C">C</option>
+        <option value="G">G</option>
+        <option value="D">D</option>
+        <option value="A">A</option>
+        <option value="E">E</option>
+    </select>
+    <p>Note Length</p>
+    <input id="notelength" name="notelength" type="number">
+    <button type="submit" (click)="randFourChord()">Submit</button>
+    </div>
+    
+    <div id="songPlayback"></div>
+    <div id="saveSong">
+        <input id="songTitle" name="title" type="text" placeholder="Song Title" required>
+        <button type="submit" (click)="saveSong()">Save Midi File To Profile</button>
+    </div>

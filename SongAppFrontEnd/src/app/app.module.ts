@@ -11,6 +11,7 @@ import { PolyrythmComponent } from './polyrythm/polyrythm.component';
 import { HomeComponent } from './home/home.component';
 import { SongPlayerComponent } from './song-player/song-player.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RandomSongComponent } from './random-song/random-song.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     PolyrythmComponent,
     HomeComponent,
-    SongPlayerComponent
+    SongPlayerComponent,
+    RandomSongComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
       {
         path : 'songplayer',
         component : SongPlayerComponent
+      },
+      {
+        path : 'rs',
+        component : RandomSongComponent
       }
     ]),
     NoopAnimationsModule

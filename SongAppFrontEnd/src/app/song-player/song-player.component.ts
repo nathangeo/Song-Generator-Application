@@ -38,7 +38,7 @@ export class SongPlayerComponent implements OnInit {
       console.log(this.songArray);
       console.log(this.songFileArray);
       let d = document.getElementById("controllerz");
-      d.innerHTML = 'Title: ' + this.songArray[0].title + '<br><audio controls="controls" autobuffer="autobuffer" autoplay="autoplay"><source src="data:audio/midi;base64,' + this.songFileArray[0] + '"/></audio>';
+      d.innerHTML = this.songArray[0].title + '<br><audio controls="controls" autobuffer="autobuffer"><source src="data:audio/midi;base64,' + this.songFileArray[0] + '"/></audio>';
     });
   }
 
@@ -49,7 +49,7 @@ export class SongPlayerComponent implements OnInit {
       this.theIndex = 0;
     }
 
-    d.innerHTML = 'Title: ' + this.songArray[i].title + '<br><audio controls="controls" autobuffer="autobuffer" autoplay="autoplay"><source src="data:audio/midi;base64,' + this.songFileArray[i] + '"/></audio>';
+    d.innerHTML = this.songArray[i].title + '<br><audio controls="controls" autobuffer="autobuffer"><source src="data:audio/midi;base64,' + this.songFileArray[i] + '"/></audio>';
   }
 
 }
