@@ -1,0 +1,30 @@
+#noteImage {
+    left: 50%;
+    top: 10%;
+    position: absolute;
+}
+#welcome {
+    font-family: "Lucida Console", Courier, monospace;
+    font-size: larger;
+}
+#loginhere {
+    font-family: "Lucida Console", Courier, monospace;
+}
+#newUserText {
+    font-family: "Lucida Console", Courier, monospace;
+}
+.newUser {
+    bottom: 60%;
+    position: absolute;
+}
+.logEmIn {
+    bottom: 80%;
+    position: absolute;
+}
+
+.TheBody {
+    background-color: bisque;
+}
+.theHead {
+    background-color: blueviolet;
+}

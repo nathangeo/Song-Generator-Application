@@ -1,6 +1,9 @@
+<header class="theHead">
+    <p id="welcome">Welcome to the Music Creation Tool</p>
+</header>
 <body class="TheBody">
-<p id="loginhere">Login</p>
 <div class="logEmIn">
+    <p id="loginhere">Login</p>
     <input id = "usr" type="text" placeholder="Enter Username" name="username" required>
     <input id="pass" placeholder="Enter Password" [type]="show ? 'text' : 'password'" />
     <button (click)="password()" type="button">Show</button>    
@@ -9,12 +12,13 @@
 <div class="container" id="loginMessage">
     <p id="msg"></p>
 </div>
-<p>Create New User</p>
 <div class="newUser">
+    <p id="newUserText">Create New User</p>
     <input id="username" type="text" placeholder="Enter Username" required>
     <input id="password" placeholder="EnterPassword" [type]="show ? 'text' : 'password'"/>
     <button (click)="password()" type="button">Show</button>    
     <button (click)="createUser()" type="button">Create Account</button>
 </div>
 <div id="newusermsg"></div>
+<img id="noteImage" src="../../assets/musicnotes.jpg" alt="Musical Notes">
 </body>
