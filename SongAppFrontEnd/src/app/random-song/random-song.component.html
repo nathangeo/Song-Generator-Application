@@ -1,4 +1,8 @@
-<p>random-song works!</p>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div>
+<a [routerLink]="['/home']"><button class="push_button blue" id="backBtn">Back to Home</button></a>
 <div>
     <p>Chords</p>
     <select id="chord1" name="chord1">
@@ -67,3 +71,4 @@
         <input id="songTitle" name="title" type="text" placeholder="Song Title" required>
         <button type="submit" (click)="saveSong()">Save Midi File To Profile</button>
     </div>
+<p id="saveMsg"></p>

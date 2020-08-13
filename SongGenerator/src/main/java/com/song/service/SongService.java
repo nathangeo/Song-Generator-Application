@@ -29,6 +29,14 @@ public class SongService {
 		this.songdao = songdao;
 	}
 	
+	public List<String> deleteSongById(Song song) {
+		List<String> hh = new ArrayList<String>();
+		this.songdao.deleteById(song.getSongId());
+		hh.add("Deleted song:" + song.getTitle());
+		return hh;
+		
+	}
+	
 	public List<Song> findSongByUsername(String username) {
 		return this.songdao.findSongByUsername(username);
 	}

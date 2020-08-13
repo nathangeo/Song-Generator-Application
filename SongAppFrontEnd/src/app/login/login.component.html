@@ -1,13 +1,18 @@
-<header class="theHead">
-    <p id="welcome">Welcome to the Music Creation Tool</p>
-</header>
 <body class="TheBody">
+<p id="welcome">Welcome to the Music Creation Tool</p>
+<div class='ripple-background'>
+    <div class='circle xxlarge shade1'></div>
+    <div class='circle xlarge shade2'></div>
+    <div class='circle large shade3'></div>
+    <div class='circle mediun shade4'></div>
+    <div class='circle small shade5'></div>
+</div>
 <div class="logEmIn">
     <p id="loginhere">Login</p>
     <input id = "usr" type="text" placeholder="Enter Username" name="username" required>
     <input id="pass" placeholder="Enter Password" [type]="show ? 'text' : 'password'" />
-    <button (click)="password()" type="button">Show</button>    
-    <button (click)="onClick($event)" type="button">Login</button>
+    <button (click)="password()" type="button" class="push_button blue">Show</button>    
+    <button (click)="onClick($event)" type="button" class="push_button red">Login</button>
 </div>
 <div class="container" id="loginMessage">
     <p id="msg"></p>
@@ -16,8 +21,8 @@
     <p id="newUserText">Create New User</p>
     <input id="username" type="text" placeholder="Enter Username" required>
     <input id="password" placeholder="EnterPassword" [type]="show ? 'text' : 'password'"/>
-    <button (click)="password()" type="button">Show</button>    
-    <button (click)="createUser()" type="button">Create Account</button>
+    <button (click)="password()" type="button" class="push_button blue">Show</button>    
+    <button (click)="createUser()" type="button" class="push_button red">Create Account</button>
 </div>
 <div id="newusermsg"></div>
 <img id="noteImage" src="../../assets/musicnotes.jpg" alt="Musical Notes">

@@ -1,9 +1,11 @@
-<p>home works!</p>
-<button (click)="logout()" name="logout" id="logout" type="submit">LOGOUT</button>
-<a [routerLink]="['/coftool']"><button>Circle of Fifths Tool</button></a>
+<button (click)="logout()" name="logout" id="logout" type="submit" class="push_button red">LOGOUT</button>
+<a [routerLink]="['/coftool']"><button class="push_button blue">Circle of Fifths Tool</button></a>
 <br>
-<a [routerLink]="['/poly']"><button>Polyrythms Tool</button></a>
+<a [routerLink]="['/poly']"><button class="push_button blue">Polyrythms Tool</button></a>
 <br>
-<a [routerLink]="['/songplayer']"><button>Listen to Saved Songs</button></a>
+<a [routerLink]="['/rs']"><button class="push_button blue">Random Song Generator</button></a>
 <br>
-<a [routerLink]="['/rs']"><button>Random Song Generator</button></a>
+<a [routerLink]="['/songplayer']"><button class="push_button blue" id="songListen">Listen to Saved Songs</button></a>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>

@@ -42,6 +42,19 @@ export class SongPlayerComponent implements OnInit {
     });
   }
 
+  deleteSong(i : number) {
+    let input = {
+      "songId" : this.songArray[i].songId,
+      "title" : this.songArray[i].title,
+      "username" : this.songArray[i].username
+    }
+    this.httpClient.post("http://localhost:9000/song/del", input)
+    .subscribe(x => {
+      let d = document.getElementById("deletemsg");
+      d.innerHTML = "Deleted song: " + this.songArray[i].title;
+    });
+  }
+
   playSong(i : number) {
     this.theIndex = this.theIndex + 1;
     let d = document.getElementById("controllerz");

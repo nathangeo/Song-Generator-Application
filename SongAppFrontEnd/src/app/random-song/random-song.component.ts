@@ -51,7 +51,8 @@ export class RandomSongComponent implements OnInit {
     this.httpClient.post("http://localhost:9000/song/save", input)
     .subscribe(x => {
       console.log(x);
-
+      let d = document.getElementById("saveMsg");
+      d.innerHTML = "Saved file to profile.";
 
     });
   }

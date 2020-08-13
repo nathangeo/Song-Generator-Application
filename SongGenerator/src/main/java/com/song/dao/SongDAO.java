@@ -11,5 +11,6 @@ import com.song.entity.Song;
 public interface SongDAO extends JpaRepository<Song, Integer>{
 
 	public List<Song> findSongByUsername(String username);
+	public Song findSongByTitleAndUsername(String title, String username);
 	
 }

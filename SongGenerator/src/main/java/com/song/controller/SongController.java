@@ -37,6 +37,14 @@ public class SongController {
 		this.songservice = songservice;
 	}
 	
+    @RequestMapping(value = "/del", method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    @ResponseBody()
+    public List<String> deleteSongById(@RequestBody Song song) throws IOException {
+    	return this.songservice.deleteSongById(song);
+    }
+	
     @RequestMapping(value = "/rfc", method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
