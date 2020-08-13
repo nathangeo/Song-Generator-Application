@@ -4,7 +4,7 @@
 <div>
 <a [routerLink]="['/home']"><button class="push_button blue" id="backBtn">Back to Home</button></a>
 <div *ngFor="let item of songArray; index as i">
-    <button (click)="deleteSong(i)" class="delbuttonn" id="delbutton">DELETE</button>
+    <button (click)="deleteSong(i)" class="small red button" id="delbuttonn">Delete</button>
     <button (click)="playSong(i)" class="push_button blue">{{item.title}}</button>
 </div>
 <div id="controllerz"></div>

@@ -9,7 +9,7 @@
 </div>
 <div class="logEmIn">
     <p id="loginhere">Login</p>
-    <input id = "usr" type="text" placeholder="Enter Username" name="username" required>
+    <input id = "usr" type="text" placeholder="Enter Username" name="username" required autocomplete="off">
     <input id="pass" placeholder="Enter Password" [type]="show ? 'text' : 'password'" />
     <button (click)="password()" type="button" class="push_button blue">Show</button>    
     <button (click)="onClick($event)" type="button" class="push_button red">Login</button>
@@ -19,7 +19,7 @@
 </div>
 <div class="newUser">
     <p id="newUserText">Create New User</p>
-    <input id="username" type="text" placeholder="Enter Username" required>
+    <input id="username" type="text" placeholder="Enter Username" required autocomplete="off">
     <input id="password" placeholder="EnterPassword" [type]="show ? 'text' : 'password'"/>
     <button (click)="password()" type="button" class="push_button blue">Show</button>    
     <button (click)="createUser()" type="button" class="push_button red">Create Account</button>
